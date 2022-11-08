@@ -1,6 +1,6 @@
 ﻿namespace SudokuSolver
 {
-    public static class Solver
+    public static class SudokuSolver
     {
         public static int[,] Solve(int[,] sudokuMatrix)
         {

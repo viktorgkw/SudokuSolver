@@ -1,8 +1,8 @@
-﻿namespace SudokuSolver
+﻿namespace SudokuSolver.SudokuRelated
 {
     public static class SudokuPattern
     {
-        private static int[,] sudokuPattern = new int[9,9]; 
+        private static int[,] sudokuPattern = new int[9, 9];
 
         public static int[,] GetPattern()
         {

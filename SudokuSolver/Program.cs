@@ -1,4 +1,5 @@
 ﻿using SudokuSolver;
+using SudokuSolver.IO;
 
 Sudoku sudoku = new Sudoku();
 

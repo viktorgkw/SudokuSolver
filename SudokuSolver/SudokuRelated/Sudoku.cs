@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Text;
+using SudokuSolver.SudokuRelated;
 
 namespace SudokuSolver
 {
@@ -56,7 +57,7 @@ namespace SudokuSolver
 
         public void Solve()
         {
-            sudokuMatrix = Solver.Solve(sudokuMatrix);
+            sudokuMatrix = SudokuSolver.Solve(sudokuMatrix);
         }
     }
 }
