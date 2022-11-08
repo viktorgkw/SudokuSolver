@@ -1,12 +1,12 @@
 ﻿namespace SudokuSolver
 {
-    public class Solver
+    public static class Solver
     {
-        // TODO
-
-        public void Solve()
+        public static int[,] Solve(int[,] sudokuMatrix)
         {
-            // Maybe change void?
+            int[,] solvedSudokuMatrix = new int[9, 9];
+
+            return solvedSudokuMatrix;
         }
     }
 }
