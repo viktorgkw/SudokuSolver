@@ -5,6 +5,7 @@ namespace SudokuSolver
 {
     public class Sudoku
     {
+        public const int sudokuSize = 9;
         private int[,] sudokuMatrix;
         public Sudoku()
         {
@@ -19,14 +20,14 @@ namespace SudokuSolver
 
         public void Print()
         {
-            for (int row = 0; row < sudokuMatrix.GetLength(0); row++)
+            for (int row = 0; row < sudokuSize; row++)
             {
                 if (row == 0 || row == 3 || row == 6 )
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine("|---|---|-|---|---|-|---|---|");
                 }
-                for (int col = 0; col < sudokuMatrix.GetLength(1); col++)
+                for (int col = 0; col < sudokuSize; col++)
                 {
                     if (col == 3 || col == 6)
                     {
@@ -56,13 +57,13 @@ namespace SudokuSolver
 
         public bool Solve()
         {
-            for (int row = 0; row < 9; row++)
+            for (int row = 0; row < sudokuSize; row++)
             {
-                for (int col = 0; col < 9; col++)
+                for (int col = 0; col < sudokuSize; col++)
                 {
                     if (sudokuMatrix[row, col] == 0)
                     {
-                        for (int number = 1; number <= 9; number++)
+                        for (int number = 1; number <= sudokuSize; number++)
                         {
                             if (IsPlaceable(row, col, number))
                             {
@@ -89,7 +90,7 @@ namespace SudokuSolver
 
         private bool IsPlaceable(int row, int col, int number)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < sudokuSize; i++)
             {
                 // If there is another row with the same column and same number we return false.
                 if (sudokuMatrix[i, col] != 0 && sudokuMatrix[i, col] == number)
