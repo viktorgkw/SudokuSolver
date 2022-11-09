@@ -1,6 +1,6 @@
-﻿namespace SudokuSolver.SudokuRelated
+﻿namespace SudokuSolver.SudokuRelated.Patterns
 {
-    public static class SudokuPatterns
+    public static class PatternSetter
     {
         public static int[,] SetPattern()
         {

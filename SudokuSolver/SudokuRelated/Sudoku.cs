@@ -1,5 +1,5 @@
-﻿using SudokuSolver.SudokuRelated;
-using System.Security.Principal;
+﻿using SudokuSolver.SudokuRelated.Patterns;
+using SudokuSolver.SudokuRelated.Simulation;
 
 namespace SudokuSolver
 {
@@ -10,7 +10,22 @@ namespace SudokuSolver
 
         public Sudoku()
         {
-            sudokuMatrix = SudokuPatterns.SetPattern();
+            var pattern = PatternSetter.SetPattern();
+            GeneratedPattern.pattern = new int[sudokuSize, sudokuSize];
+            sudokuMatrix = new int[sudokuSize, sudokuSize];
+            ArrayTransferer(sudokuMatrix, pattern);
+            ArrayTransferer(GeneratedPattern.pattern, pattern);
+        }
+
+        private void ArrayTransferer(int[,] location, int[,] actualMatrix)
+        {
+            for (int row = 0; row < sudokuSize; row++)
+            {
+                for (int col = 0; col < sudokuSize; col++)
+                {
+                    location[row, col] = actualMatrix[row, col];
+                }
+            }
         }
 
         public void Print()
@@ -48,6 +63,54 @@ namespace SudokuSolver
             Console.WriteLine("|---|---|-|---|---|-|---|---|");
 
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void StaticPrint(int[,] outsideSudoku, int currentRow, int currentCol)
+        {
+            for (int row = 0; row < sudokuSize; row++)
+            {
+                if (row == 0 || row == 3 || row == 6)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("|---|---|-|---|---|-|---|---|");
+                }
+                for (int col = 0; col < sudokuSize; col++)
+                {
+                    if (col == 3 || col == 6)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.Write($" |");
+                        IsCurrentLocation(outsideSudoku, row, col, currentRow, currentCol);
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.Write($"|");
+
+                        continue;
+                    }
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.Write($"|");
+                    IsCurrentLocation(outsideSudoku, row, col, currentRow, currentCol);
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.Write($"|");
+                }
+                Console.WriteLine();
+            }
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("|---|---|-|---|---|-|---|---|");
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private static void IsCurrentLocation(int[,] sudokuMatrix, int row, int col, int expectedRow, int expectedCol)
+        {
+            if (row == expectedRow && col == expectedCol)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{sudokuMatrix[row, col]}");
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{sudokuMatrix[row, col]}");
         }
 
         public bool Solve()
@@ -109,6 +172,11 @@ namespace SudokuSolver
             }
 
             return true;
+        }
+
+        public void Simulate()
+        {
+            Simulation.Simulate();
         }
     }
 }

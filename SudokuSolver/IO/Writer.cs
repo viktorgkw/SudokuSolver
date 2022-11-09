@@ -1,4 +1,6 @@
-﻿namespace SudokuSolver
+﻿using SudokuSolver.IO;
+
+namespace SudokuSolver
 {
     public static class Writer
     {
@@ -39,6 +41,18 @@
             {
                 Console.Clear();
             }
+        }
+
+        public static string ResponseAwaiter(bool clear = false)
+        {
+            string response = Console.ReadLine().ToLower();
+
+            if (clear)
+            {
+                Console.Clear();
+            }
+
+            return response;
         }
     }
 }
