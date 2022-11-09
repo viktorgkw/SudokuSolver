@@ -7,13 +7,8 @@ namespace SudokuSolver
     {
         public const int sudokuSize = 9;
         private int[,] sudokuMatrix;
-        public Sudoku()
-        {
-            sudokuMatrix = new int[9, 9];
-            SetStartPattern();
-        }
 
-        private void SetStartPattern()
+        public Sudoku()
         {
             sudokuMatrix = SudokuPatterns.SetPattern();
         }

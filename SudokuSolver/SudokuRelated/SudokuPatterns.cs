@@ -2,17 +2,10 @@
 {
     public static class SudokuPatterns
     {
-        private static int[,] sudokuPattern = new int[9, 9];
-
         public static int[,] SetPattern()
         {
-            GetPattern();
+            int[,] sudokuPattern = new int[9, 9];
 
-            return sudokuPattern;
-        }
-
-        private static void GetPattern()
-        {
             int patternNumber = new Random().Next(1, Patterns.PatternsCount + 1);
 
             List<int[]> rows = Patterns.Set(patternNumber);
@@ -26,6 +19,8 @@
                     sudokuPattern[row, col] = currentRow[col];
                 }
             }
+
+            return sudokuPattern;
         }
     }
 }

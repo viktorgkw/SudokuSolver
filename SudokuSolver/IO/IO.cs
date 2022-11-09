@@ -23,7 +23,6 @@
             Writer.NpcTalk("Result:", 500, false);
             Writer.SudokuPrint(sudoku, 500);
             Writer.ButtonAwaiter("");
-            
         }
     }
 }

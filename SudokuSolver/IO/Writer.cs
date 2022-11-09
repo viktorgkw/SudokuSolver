@@ -15,13 +15,12 @@
             {
                 Console.Clear();
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void SudokuPrint(Sudoku sudoku, int sleepTime, bool clear = false)
         {
             sudoku.Print();
+            Console.WriteLine("");
 
             Thread.Sleep(sleepTime);
 
@@ -33,7 +32,6 @@
 
         public static void ButtonAwaiter(string text, bool clear = false)
         {
-            Console.WriteLine("");
             Console.Write(text);
             Console.ReadKey();
 
