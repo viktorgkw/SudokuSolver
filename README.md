@@ -14,6 +14,7 @@
 
 ## Fun facts
 > This was a school exercise that was given to me with deadline 1 week but I made it in 2 days.
+> 
 > This algorithm is actually pretty easy to understand and write.
 
 <br />
