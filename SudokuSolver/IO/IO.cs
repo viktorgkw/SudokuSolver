@@ -8,20 +8,29 @@
             {
                 Writer.NpcTalk("Sudoku Solver Started...", 2000, true);
 
-                Writer.NpcTalk("Sudoku Starting Pattern:", 1000);
-                Writer.SudokuPrint(sudoku, 0);
-                Writer.ButtonAwaiter(true);
+                Writer.NpcTalk("Sudoku Starting Pattern:", 1000, false);
+                Writer.SudokuPrint(sudoku, 500);
+                Writer.ButtonAwaiter("Click any button to continue..", true);
 
-                sudoku.Solve();
                 Writer.NpcTalk("Solving...", 2000, true);
 
-                Writer.NpcTalk("Result:", 500);
-                Writer.SudokuPrint(sudoku, 0);
+                bool didSolve = sudoku.Solve();
+
+                if (!didSolve)
+                {
+                    Writer.NpcTalk("This sudoku cannot be solved.", 500, false, ConsoleColor.Red);
+                    return;
+                }
+
+                Writer.NpcTalk("Result:", 500, false);
+                Writer.SudokuPrint(sudoku, 500);
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Sorry, an error occured while trying to solve the Sudoku.");
+                Console.WriteLine("Exception message:");
+                Console.WriteLine(" ");
                 Console.WriteLine(ex.Message);
             }
         }

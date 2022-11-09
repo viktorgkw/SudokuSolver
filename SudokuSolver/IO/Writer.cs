@@ -2,9 +2,9 @@
 {
     public static class Writer
     {
-        public static void NpcTalk(string text, int sleepTime, bool clear = false)
+        public static void NpcTalk(string text, int sleepTime, bool clear, ConsoleColor consoleColor = ConsoleColor.Cyan)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = consoleColor;
 
             Console.WriteLine(text);
             Console.WriteLine(" ");
@@ -21,8 +21,6 @@
 
         public static void SudokuPrint(Sudoku sudoku, int sleepTime, bool clear = false)
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-
             sudoku.Print();
 
             Thread.Sleep(sleepTime);
@@ -31,14 +29,12 @@
             {
                 Console.Clear();
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public static void ButtonAwaiter(bool clear = false)
+        public static void ButtonAwaiter(string text, bool clear = false)
         {
             Console.WriteLine("");
-            Console.Write("If you are done looking at the starting pattern click ANY button.");
+            Console.Write(text);
             Console.ReadKey();
 
             if (clear)

@@ -1,6 +1,5 @@
-﻿using System.ComponentModel;
-using System.Text;
-using SudokuSolver.SudokuRelated;
+﻿using SudokuSolver.SudokuRelated;
+using System.Security.Principal;
 
 namespace SudokuSolver
 {
@@ -15,7 +14,7 @@ namespace SudokuSolver
 
         private void SetStartPattern()
         {
-            sudokuMatrix = SudokuPattern.GetPattern();
+            sudokuMatrix = SudokuPatterns.SetPattern();
         }
 
         public void Print()
@@ -55,9 +54,65 @@ namespace SudokuSolver
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public void Solve()
+        public bool Solve()
         {
-            sudokuMatrix = SudokuSolver.Solve(sudokuMatrix);
+            for (int row = 0; row < 9; row++)
+            {
+                for (int col = 0; col < 9; col++)
+                {
+                    if (sudokuMatrix[row, col] == 0)
+                    {
+                        for (int number = 1; number <= 9; number++)
+                        {
+                            if (IsPlaceable(row, col, number))
+                            {
+                                sudokuMatrix[row, col] = number;
+
+                                if (Solve())
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    sudokuMatrix[row, col] = 0;
+                                }
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsPlaceable(int row, int col, int number)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                // If there is another row with the same column and same number we return false.
+                if (sudokuMatrix[i, col] != 0 && sudokuMatrix[i, col] == number)
+                {
+                    return false;
+                }
+                
+                // Same validation but with each column.
+                if (sudokuMatrix[row, i] != 0 && sudokuMatrix[row, i] == number)
+                {
+                    return false;
+                }
+
+                // Checks if the 3x3 we are at contains the number we are trying to put
+                if (sudokuMatrix[3 * (row / 3) + i / 3, 3 * (col / 3) + i % 3] != 0
+                    &&
+                    sudokuMatrix[3 * (row / 3) + i / 3, 3 * (col / 3) + i % 3] == number)
+                {
+                    return false;
+                }           
+            }
+
+            return true;
         }
     }
 }
