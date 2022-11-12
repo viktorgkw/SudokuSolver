@@ -1,41 +1,45 @@
-﻿namespace SudokuSolver.IO
+﻿using SudokuSolver.IO.Writers;
+
+namespace SudokuSolver.IO
 {
     public static class IO
     {
         public static void Start(Sudoku sudoku)
         {
-            Writer.NpcTalk("Sudoku Solver Started...", 2000, true);
+            Writer writer = new Writer();
 
-            Writer.NpcTalk("Sudoku Starting Pattern:", 1000, false);
-            Writer.SudokuPrint(sudoku, 500);
-            Writer.ButtonAwaiter("Click any button to continue..", true);
+            writer.Write("Sudoku Solver Started...", 2000, true);
 
-            Writer.NpcTalk("Solving...", 2000, true);
+            writer.Write("Sudoku Starting Pattern:", 1000, false);
+            writer.PrintSudoku(sudoku, 500);
+            writer.ButtonAwaiter("Click any button to continue..", true);
+
+            writer.Write("Solving...", 2000, true);
 
             bool didSolve = sudoku.Solve();
 
             if (!didSolve)
             {
-                Writer.NpcTalk("This sudoku cannot be solved.", 500, false, ConsoleColor.Red);
+                writer.Write("This sudoku cannot be solved.", 500, false, ConsoleColor.Red);
                 return;
             }
 
-            Writer.NpcTalk("Result:", 500, false);
-            Writer.SudokuPrint(sudoku, 500);
-            Writer.ButtonAwaiter("", true);
+            writer.Write("Result:", 500, false);
+            writer.PrintSudoku(sudoku, 500);
+            writer.ButtonAwaiter("", true);
 
-            Writer.NpcTalk("Okay now.. That was quick and not impressive.", 2000, false, ConsoleColor.Yellow);
-            Writer.NpcTalk("Do you want to see a simulation of this algorithm?", 2000, false, ConsoleColor.Yellow);
-            Writer.NpcTalk("Yes / No ...", 500, false, ConsoleColor.White);
+            writer.Write("Okay now.. That was quick and not impressive.", 2000, false, ConsoleColor.Yellow);
+            writer.Write("Do you want to see a simulation of this algorithm?", 2000, false, ConsoleColor.Yellow);
+            writer.Write("Yes / No ...", 500, false, ConsoleColor.White);
 
-            if (Writer.ResponseAwaiter(true) == "yes")
+            if (writer.ResponseAwaiter(true) == "yes")
             {
                 sudoku.Simulate();
-                Writer.ButtonAwaiter("");
+                writer.ButtonAwaiter("");
                 return;
             }
 
-            Writer.NpcTalk("See ya..", 500, false);
+            writer.Write("See ya..", 500, false);
         }
     }
 }

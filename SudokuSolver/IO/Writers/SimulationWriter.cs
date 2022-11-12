@@ -1,8 +1,10 @@
-﻿namespace SudokuSolver.IO.Simulation
+﻿using SudokuSolver.IO.Interfaces;
+
+namespace SudokuSolver.IO.Simulation
 {
-    public static class SimulationWriter
+    public class SimulationWriter : ISimulationWriter
     {
-        public static void Diagnose(int[,] sudokuMatrix, string text, int row, int col, string conclusion = "")
+        public void Write(int[,] sudokuMatrix, string text, int row, int col, string conclusion = "")
         {
             Sudoku.StaticPrint(sudokuMatrix, row, col);
 
@@ -15,11 +17,11 @@
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Conclusion: ");
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(conclusion);
             }
 
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
 
             Console.Clear();
         }

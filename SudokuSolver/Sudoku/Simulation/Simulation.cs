@@ -6,9 +6,12 @@ namespace SudokuSolver.SudokuRelated.Simulation
     public static class Simulation
     {
         private static int[,] _sudokuMatrix;
+        private static SimulationWriter simulationWriter;
 
         public static void Simulate()
         {
+            simulationWriter = new SimulationWriter();
+
             _sudokuMatrix = GeneratedPattern.pattern;
 
             Solve();
@@ -22,14 +25,14 @@ namespace SudokuSolver.SudokuRelated.Simulation
                 {
                     if (_sudokuMatrix[row, col] == 0)
                     {
-                        SimulationWriter.Diagnose(_sudokuMatrix, $"Row: {row} Col: {col} are empty so we try to set a number.", row, col);
+                        simulationWriter.Write(_sudokuMatrix, $"Row: {row} Col: {col} are empty so we try to set a number.", row, col);
                         for (int number = 1; number <= Sudoku.sudokuSize; number++)
                         {
-                            SimulationWriter.Diagnose(_sudokuMatrix, $"We try to place {number} on Row: {row} Col: {col}", row, col);
+                            simulationWriter.Write(_sudokuMatrix, $"We try to place {number} on Row: {row} Col: {col}", row, col);
                             if (IsPlaceable(row, col, number))
                             {
                                 _sudokuMatrix[row, col] = number;
-                                SimulationWriter.Diagnose(_sudokuMatrix, $"{number} placed at Row: {row} Col: {col}", row, col);
+                                simulationWriter.Write(_sudokuMatrix, $"{number} placed at Row: {row} Col: {col}", row, col);
 
                                 if (Solve())
                                 {
@@ -38,19 +41,19 @@ namespace SudokuSolver.SudokuRelated.Simulation
                                 else
                                 {
                                     _sudokuMatrix[row, col] = 0;
-                                    SimulationWriter.Diagnose(_sudokuMatrix, $"{number} removed from Row: {row} Col: {col}", row, col);
+                                    simulationWriter.Write(_sudokuMatrix, $"{number} removed from Row: {row} Col: {col}", row, col);
                                 }
                             }
                             else
                             {
-                                SimulationWriter.Diagnose(_sudokuMatrix, $"{number} cannot be placed at Row: {row} Col: {col}", row, col, $"Number: {number} is either in the 3x3 or on the same row.");
+                                simulationWriter.Write(_sudokuMatrix, $"{number} cannot be placed at Row: {row} Col: {col}", row, col, $"Number: {number} is either in the 3x3 or on the same row.");
                             }
                         }
-                        SimulationWriter.Diagnose(_sudokuMatrix, $"Algorithm couldn't find a number for this spot.", row, col);
+                        simulationWriter.Write(_sudokuMatrix, $"Algorithm couldn't find a number for this spot.", row, col);
                         return false;
                     }
 
-                    SimulationWriter.Diagnose(_sudokuMatrix, $"Row: {row} Col: {col} is not empty.", row, col, $"We can't replace already filled cells.");
+                    simulationWriter.Write(_sudokuMatrix, $"Row: {row} Col: {col} is not empty.", row, col, $"We can't replace already filled cells.");
                 }
             }
 
