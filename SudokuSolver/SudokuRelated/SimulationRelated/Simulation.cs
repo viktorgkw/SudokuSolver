@@ -1,17 +1,15 @@
-﻿using SudokuSolver.IO.Simulation;
+﻿using SudokuSolver.IO.Writers;
 using SudokuSolver.SudokuRelated.Patterns;
 
-namespace SudokuSolver.SudokuRelated.Simulation
+namespace SudokuSolver.SudokuRelated.SimulationRelated
 {
     public static class Simulation
     {
         private static int[,] _sudokuMatrix;
-        private static SimulationWriter simulationWriter;
+        private static SimulationWriter simulationWriter = new SimulationWriter();
 
         public static void Simulate()
         {
-            simulationWriter = new SimulationWriter();
-
             _sudokuMatrix = GeneratedPattern.pattern;
 
             Solve();
@@ -49,7 +47,7 @@ namespace SudokuSolver.SudokuRelated.Simulation
                                 simulationWriter.Write(_sudokuMatrix, $"{number} cannot be placed at Row: {row} Col: {col}", row, col, $"Number: {number} is either in the 3x3 or on the same row.");
                             }
                         }
-                        simulationWriter.Write(_sudokuMatrix, $"Algorithm couldn't find a number for this spot.", row, col);
+                        simulationWriter.Write(_sudokuMatrix, $"Algorithm couldn't find a number for this spot.\n So we use the \"Backtracking\" Technique and we go a step back.", row, col);
                         return false;
                     }
 

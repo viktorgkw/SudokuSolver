@@ -1,5 +1,5 @@
-﻿using SudokuSolver;
-using SudokuSolver.IO;
+﻿using SudokuSolver.IO;
+using SudokuSolver.SudokuRelated;
 
 try
 {

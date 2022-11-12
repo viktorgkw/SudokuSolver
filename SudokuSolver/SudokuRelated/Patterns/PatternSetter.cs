@@ -6,9 +6,9 @@
         {
             int[,] sudokuPattern = new int[9, 9];
 
-            int patternNumber = new Random().Next(1, Patterns.PatternsCount + 1);
+            int patternNumber = new Random().Next(1, PatternGetter.PatternsCount + 1);
 
-            List<int[]> rows = Patterns.Set(patternNumber);
+            List<int[]> rows = PatternGetter.Set(patternNumber);
 
             for (int row = 0; row < Sudoku.sudokuSize; row++)
             {

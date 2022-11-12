@@ -1,8 +1,9 @@
 ﻿namespace SudokuSolver.SudokuRelated.Patterns
 {
-    public static class Patterns
+    public static class PatternGetter
     {
         public const int PatternsCount = 6;
+
         public static List<int[]> Set(int patternNumber)
         {
             switch (patternNumber)

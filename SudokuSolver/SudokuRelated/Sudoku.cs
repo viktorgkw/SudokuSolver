@@ -1,38 +1,27 @@
 ﻿using SudokuSolver.SudokuRelated.Patterns;
-using SudokuSolver.SudokuRelated.Simulation;
+using SudokuSolver.SudokuRelated.SimulationRelated;
 
-namespace SudokuSolver
+namespace SudokuSolver.SudokuRelated
 {
     public class Sudoku
     {
         public const int sudokuSize = 9;
-        private int[,] sudokuMatrix;
+        private int[,] sudokuMatrix = new int[sudokuSize, sudokuSize];
 
         public Sudoku()
         {
             var pattern = PatternSetter.SetPattern();
             GeneratedPattern.pattern = new int[sudokuSize, sudokuSize];
-            sudokuMatrix = new int[sudokuSize, sudokuSize];
-            ArrayTransferer(sudokuMatrix, pattern);
-            ArrayTransferer(GeneratedPattern.pattern, pattern);
-        }
 
-        private void ArrayTransferer(int[,] location, int[,] actualMatrix)
-        {
-            for (int row = 0; row < sudokuSize; row++)
-            {
-                for (int col = 0; col < sudokuSize; col++)
-                {
-                    location[row, col] = actualMatrix[row, col];
-                }
-            }
+            Array.Copy(pattern, sudokuMatrix, sudokuSize);
+            Array.Copy(pattern, GeneratedPattern.pattern, sudokuSize);
         }
 
         public void Print()
         {
             for (int row = 0; row < sudokuSize; row++)
             {
-                if (row == 0 || row == 3 || row == 6 )
+                if (row == 0 || row == 3 || row == 6)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine("|---|---|-|---|---|-|---|---|");
@@ -155,7 +144,7 @@ namespace SudokuSolver
                 {
                     return false;
                 }
-                
+
                 // Same validation but with each column.
                 if (sudokuMatrix[row, i] != 0 && sudokuMatrix[row, i] == number)
                 {
@@ -168,7 +157,7 @@ namespace SudokuSolver
                     sudokuMatrix[3 * (row / 3) + i / 3, 3 * (col / 3) + i % 3] == number)
                 {
                     return false;
-                }           
+                }
             }
 
             return true;

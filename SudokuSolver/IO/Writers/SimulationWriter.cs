@@ -1,6 +1,7 @@
 ﻿using SudokuSolver.IO.Interfaces;
+using SudokuSolver.SudokuRelated;
 
-namespace SudokuSolver.IO.Simulation
+namespace SudokuSolver.IO.Writers
 {
     public class SimulationWriter : ISimulationWriter
     {

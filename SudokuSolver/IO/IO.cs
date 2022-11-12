@@ -1,4 +1,5 @@
 ﻿using SudokuSolver.IO.Writers;
+using SudokuSolver.SudokuRelated;
 
 namespace SudokuSolver.IO
 {

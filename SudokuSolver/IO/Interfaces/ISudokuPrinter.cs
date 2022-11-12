@@ -1,4 +1,6 @@
-﻿namespace SudokuSolver.IO.Interfaces
+﻿using SudokuSolver.SudokuRelated;
+
+namespace SudokuSolver.IO.Interfaces
 {
     interface ISudokuPrinter
     {
