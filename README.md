@@ -8,7 +8,9 @@
 
 > If there is a possible **solve** the program prints the **solved sudoku** in a **fancy** way.
 
-> The application uses **Backtracking Algorithm**.
+> The application uses **Backtracking**.
+
+> When the **algorithm** completes you can choose if you want to see the **simulation** behind the algorithm and all the steps it does in order to solve the **sudoku**.
 
 ## How it works?
 > #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/SudokuPatterns.cs#L14"> First the program gets the starting sudoku pattern.</a>
