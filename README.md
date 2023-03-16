@@ -1,18 +1,22 @@
 # Sudoku Solver 🎲
 
 ## Languages & Technologies 💻
+
 - C#
+- Console Application
 
 ## About ℹ️
+
 > **Sudoku Solver** is a **C# Console Application** that gets random **Pattern** and uses algorithm to see if its solveable.
-
+>
 > If there is a possible **solve** the program prints the **solved sudoku** in a **fancy** way.
-
+>
 > The application uses **Backtracking**.
-
+>
 > When the **algorithm** completes you can choose if you want to see the **simulation** behind the algorithm and all the steps it does in order to solve the **sudoku**.
 
 ## How it works? ❔
+
 > #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/SudokuPatterns.cs#L14"> First the program gets the starting sudoku pattern.</a>
 >
 > #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/SudokuPatterns.cs#L7">Then sets it.</a>
@@ -30,12 +34,8 @@
 > #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/dea67d7a55aa48a22a6422ae864fa2e50d1259ce/SudokuSolver/SudokuRelated/SimulationRelated/Simulation.cs#L11">At the end of the program there is a simple answer awaiter that if you say yes the program will simulate the algorithm else it will stop.</a>
 
 ## Resources Used 📝
+
 > - #### <a href="https://sudokuprimer.com/patterns.php">Patterns</a>
 > - #### <a href="https://www.conceptispuzzles.com/index.aspx?uri=puzzle/sudoku/techniques">Solving Techniques</a>
-
-## Fun facts 🤓
-> #### This algorithm is actually pretty easy to understand and write.
-
-<br />
 
 ## Thanks for checking out the repository! 💚
