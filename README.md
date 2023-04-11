@@ -1,10 +1,5 @@
 # Sudoku Solver 🎲
 
-## Languages & Technologies 💻
-
-- C#
-- Console Application
-
 ## About ℹ️
 
 > **Sudoku Solver** is a **C# Console Application** that gets random **Pattern** and uses algorithm to see if its solveable.
@@ -17,21 +12,19 @@
 
 ## How it works? ❔
 
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/SudokuPatterns.cs#L14"> First the program gets the starting sudoku pattern.</a>
+> #### First the program gets the starting sudoku pattern.
 >
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/SudokuPatterns.cs#L7">Then sets it.</a>
+> #### Then we start the algorithm.
 >
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/Sudoku.cs#L58">Then we start the algorithm.</a>
+> #### The algorithm checks if the number we try to set is valid in the position.
 >
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/Sudoku.cs#L96">The algorithm checks if the number we try to enter is already on the same row.</a>
+> #### If all those are false we put the number and repeat until we find a solution.
 >
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/Sudoku.cs#L102">Then it checks if the same number is in the other rows with the current column.</a>
->
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/Sudoku.cs#L108">And lastly it checks if the number exists in the same 3x3 block.</a>
->
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/main/SudokuSolver/SudokuRelated/Sudoku.cs#L58">If all those are false we put the number and repeat until we find a solution.</a>
->
-> #### <a href="https://github.com/viktorgkw/SudokuSolver/blob/dea67d7a55aa48a22a6422ae864fa2e50d1259ce/SudokuSolver/SudokuRelated/SimulationRelated/Simulation.cs#L11">At the end of the program there is a simple answer awaiter that if you say yes the program will simulate the algorithm else it will stop.</a>
+> #### When the algorithm is done, you can choose if you want to see simulation of the run.
+
+## Languages & Technologies 💻
+
+- C#
 
 ## Resources Used 📝
 
