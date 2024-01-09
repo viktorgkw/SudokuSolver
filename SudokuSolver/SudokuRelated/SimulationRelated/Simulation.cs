@@ -5,12 +5,12 @@ namespace SudokuSolver.SudokuRelated.SimulationRelated
 {
     public static class Simulation
     {
-        private static int[,] _sudokuMatrix;
-        private static SimulationWriter simulationWriter = new SimulationWriter();
+        private static int[,] _sudokuMatrix = new int[0,0];
+        private static readonly SimulationWriter simulationWriter = new();
 
         public static void Simulate()
         {
-            _sudokuMatrix = GeneratedPattern.pattern;
+            _sudokuMatrix = GeneratedPattern.Pattern;
 
             Solve();
         }

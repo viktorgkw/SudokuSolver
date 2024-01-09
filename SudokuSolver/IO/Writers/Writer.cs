@@ -44,9 +44,10 @@ namespace SudokuSolver.IO.Writers
             }
         }
 
-        public string ResponseAwaiter(bool clear = false)
+        public string ResponseAwaiter()
         {
-            string response = Console.ReadLine().ToLower();
+            string? response = Console.ReadLine()?.ToLower();
+
             while (true)
             {
                 if (response == "yes" || response == "no")
@@ -54,14 +55,10 @@ namespace SudokuSolver.IO.Writers
                     break;
                 }
 
-                response = Console.ReadLine().ToLower();
+                response = Console.ReadLine()?.ToLower();
             }
 
-            if (clear)
-            {
-                Console.Clear();
-            }
-
+            Console.Clear();
             return response;
         }
     }

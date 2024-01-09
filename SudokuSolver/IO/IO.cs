@@ -7,7 +7,7 @@ namespace SudokuSolver.IO
     {
         public static void Start(Sudoku sudoku)
         {
-            Writer writer = new Writer();
+            Writer writer = new();
 
             writer.Write("Sudoku Solver Started...", 2000, true);
 
@@ -33,9 +33,9 @@ namespace SudokuSolver.IO
             writer.Write("Do you want to see a simulation of this algorithm?", 2000, false, ConsoleColor.Yellow);
             writer.Write("Yes / No ...", 500, false, ConsoleColor.White);
 
-            if (writer.ResponseAwaiter(true) == "yes")
+            if (writer.ResponseAwaiter() == "yes")
             {
-                sudoku.Simulate();
+                Sudoku.Simulate();
                 writer.ButtonAwaiter("");
                 return;
             }

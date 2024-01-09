@@ -2,6 +2,6 @@
 {
     interface IResponseAwaiter
     {
-        string ResponseAwaiter(bool clear = false);
+        string ResponseAwaiter();
     }
 }

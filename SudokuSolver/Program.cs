@@ -3,7 +3,7 @@ using SudokuSolver.SudokuRelated;
 
 try
 {
-    Sudoku sudoku = new Sudoku();
+    Sudoku sudoku = new();
 
     IO.Start(sudoku);
 }

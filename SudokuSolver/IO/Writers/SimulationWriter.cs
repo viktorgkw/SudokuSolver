@@ -22,8 +22,7 @@ namespace SudokuSolver.IO.Writers
                 Console.WriteLine(conclusion);
             }
 
-            Thread.Sleep(2000);
-
+            Console.ReadKey();
             Console.Clear();
         }
     }

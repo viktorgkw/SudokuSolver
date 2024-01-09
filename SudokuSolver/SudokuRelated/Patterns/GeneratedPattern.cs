@@ -1,7 +1,7 @@
 ﻿namespace SudokuSolver.SudokuRelated.Patterns
 {
-    public static class GeneratedPattern
+    public class GeneratedPattern
     {
-        public static int[,] pattern;
+        public static readonly int[,] Pattern = new int[Sudoku.sudokuSize, Sudoku.sudokuSize];
     }
 }

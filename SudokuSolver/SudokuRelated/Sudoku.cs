@@ -5,16 +5,16 @@ namespace SudokuSolver.SudokuRelated
 {
     public class Sudoku
     {
+        private readonly int[,] sudokuMatrix = new int[sudokuSize, sudokuSize];
+        private const string border = "|---|---|-|---|---|-|---|---|";
         public const int sudokuSize = 9;
-        private int[,] sudokuMatrix = new int[sudokuSize, sudokuSize];
 
         public Sudoku()
         {
             var pattern = PatternSetter.SetPattern();
-            GeneratedPattern.pattern = new int[sudokuSize, sudokuSize];
 
             Array.Copy(pattern, sudokuMatrix, sudokuSize);
-            Array.Copy(pattern, GeneratedPattern.pattern, sudokuSize);
+            Array.Copy(pattern, GeneratedPattern.Pattern, sudokuSize);
         }
 
         public void Print()
@@ -24,7 +24,7 @@ namespace SudokuSolver.SudokuRelated
                 if (row == 0 || row == 3 || row == 6)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine("|---|---|-|---|---|-|---|---|");
+                    Console.WriteLine(border);
                 }
                 for (int col = 0; col < sudokuSize; col++)
                 {
@@ -49,7 +49,7 @@ namespace SudokuSolver.SudokuRelated
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("|---|---|-|---|---|-|---|---|");
+            Console.WriteLine(border);
 
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -61,7 +61,7 @@ namespace SudokuSolver.SudokuRelated
                 if (row == 0 || row == 3 || row == 6)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine("|---|---|-|---|---|-|---|---|");
+                    Console.WriteLine(border);
                 }
                 for (int col = 0; col < sudokuSize; col++)
                 {
@@ -84,7 +84,7 @@ namespace SudokuSolver.SudokuRelated
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("|---|---|-|---|---|-|---|---|");
+            Console.WriteLine(border);
 
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -163,7 +163,7 @@ namespace SudokuSolver.SudokuRelated
             return true;
         }
 
-        public void Simulate()
+        public static void Simulate()
         {
             Simulation.Simulate();
         }
